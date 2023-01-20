@@ -13,7 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string>
 
 //------------------------------------------------------ Include personnel
@@ -46,13 +46,13 @@ using namespace std;
 
 
 Statistiques::Statistiques ( bool graphe, bool exclureFichier, int heure )
+        : graphe(graphe), exclureFichier(exclureFichier), heure(heure)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Statistiques>" << endl;
 #endif
-    
 } //----- Fin de Statistiques
 
 
