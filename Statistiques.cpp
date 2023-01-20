@@ -17,6 +17,7 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
+#include "LogApache.h"
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
@@ -24,11 +25,13 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Statistiques::Méthode ( liste des paramètres )
+void Statistiques::Ajouter ( LogApache acces )
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+    pages[acces.cibleURL]++;
+
+} //----- Fin de Ajouter
 
 
 //------------------------------------------------- Surcharge d'opérateurs

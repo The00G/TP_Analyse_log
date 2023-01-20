@@ -28,7 +28,7 @@ class Statistiques
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+     void Ajouter ( LogApache );
     // Mode d'emploi :
     //
     // Contrat :
@@ -62,7 +62,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-unordered_map <string, int> URLs;
+unordered_map <string, int> pages;
 bool graphe;
 bool exclureFichier;
 int heure;
