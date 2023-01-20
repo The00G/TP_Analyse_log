@@ -38,13 +38,13 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Statistiques ( const Statistiques & unStatistiques );
+    explicit Statistiques ( const Statistiques & unStatistiques );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Statistiques ( );
+    Statistiques ( bool graphe = false, bool exclureFichier = false, int heure = -1);
     // Mode d'emploi :
     //
     // Contrat :
@@ -60,8 +60,12 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-set <string> URLs;
+
 //----------------------------------------------------- Attributs protégés
+map <string, int> URLs;
+bool graphe;
+bool exclureFichier;
+int heure;
 
 };
 

@@ -13,8 +13,9 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <set>
+#include <map>
 #include <string>
+
 //------------------------------------------------------ Include personnel
 #include "Statistiques.h"
 
@@ -34,23 +35,24 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Statistiques::Statistiques ( const Statistiques & unStatistiques )
+/*Statistiques::Statistiques ( const Statistiques & unStatistiques )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Statistiques>" << endl;
 #endif
-} //----- Fin de Statistiques (constructeur de copie)
+} //----- Fin de Statistiques (constructeur de copie)*/
 
 
-Statistiques::Statistiques ( )
+Statistiques::Statistiques ( bool graphe, bool exclureFichier, int heure )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Statistiques>" << endl;
 #endif
+    
 } //----- Fin de Statistiques
 
 
