@@ -26,8 +26,5 @@
 *.a
 *.lib
 
-# Executables
+# Executable
 analog
-*.exe
-*.out
-*.app
