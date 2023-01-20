@@ -16,8 +16,8 @@ $(EXE) : $(OBJ)
 	@echo compilation de $<
 	$(CC) $(CFLAGS) $<
 
-Main.o : Graph.h
-Graph.o : Graph.h
+Main.o : Statistiques.h 
+Statistiques.o : Statistiques.h
 
 .PHONY : remake clean debug
 

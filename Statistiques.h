@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Graph  -  description
+                           Statistiques  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Graph> (fichier Graph.h) ----------------
-#if ! defined ( GRAPH_H )
-#define GRAPH_H
+//---------- Interface de la classe <Statistiques> (fichier Statistiques.h) ----------------
+#if ! defined ( STATISTIQUES_H )
+#define STATISTIQUES_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Graph>
+// Rôle de la classe <Statistiques>
 //
 //
 //------------------------------------------------------------------------
 
-class Graph
+class Statistiques
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -34,24 +34,23 @@ public:
     // Contrat :
     //
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Graph ( const Graph & unGraph );
+    explicit Statistiques ( const Statistiques & unStatistiques );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Graph ( );
+    Statistiques ( bool graphe = false, bool exclureFichier = false, int heure = -1);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Graph ( );
+    virtual ~Statistiques ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -61,12 +60,16 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-set <string> URLs;
+
 //----------------------------------------------------- Attributs protégés
+map <string, int> URLs;
+bool graphe;
+bool exclureFichier;
+int heure;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Graph>
+//-------------------------------- Autres définitions dépendantes de <Statistiques>
 
-#endif // GRAPH_H
+#endif // STATISTIQUES_H
 
