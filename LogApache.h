@@ -38,7 +38,7 @@ public:
     string cibleURL;
     string httpVersion;
     int status;
-    int quantiteDonnees; // -1 si anonymisé
+    int quantiteDonnees;
     string refererURL;
     string navigateurInfo;
 //----------------------------------------------------- Méthodes publiques

@@ -35,27 +35,40 @@ void FluxLog::LireLog ( )
 
     if(!stream.fail())
     {
-        char * tmp = new char[2000];
+        char tmp = new char[2000];
         
-        char * ip = new char[20];
-        char * userLogname = new char[50];
-        char * authenticatedUser = new char[50];
-        char * dateEtHeure = new char[30];
+        string ip[20];
+        char userLogname[50];
+        char authenticatedUser[50];
+        char dateEtHeure[30];
         int date;
         int heure;
-        char * typeAction = new char[20];
-        char * cibleURL = new char[500];
-        char * httpVersion = new char[20];
-        char * statusChar = new char[10];
+        char typeAction[20];
+        char cibleURL[500];
+        char httpVersion[20];
+        char statusChar[10];
         int status;
-        char * quantiteDonneesChar = new char[20];
+        char quantiteDonneesChar[20];
         int quantiteDonnees;
-        char * refererURL = new char[500];
-        char * navigateurInfo = new char[500];
+        char refererURL[500];
+        char navigateurInfo[500];
 
         while(!stream.eof())
         {
-            stream.getline(tmp,2000);
+            std::getline(stream,ip,' ');
+
+            stream.getline(authenticatedUser,);
+
+
+
+
+
+
+
+
+
+
+
         }
 
         delete(tmp);
