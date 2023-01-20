@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Graph  -  description
+                           Statistiques  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Graph> (fichier Graph.cpp) ------------
+//---------- Réalisation de la classe <Statistiques> (fichier Statistiques.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -16,14 +16,14 @@ using namespace std;
 #include <set>
 #include <string>
 //------------------------------------------------------ Include personnel
-#include "Graph.h"
+#include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Graph::Méthode ( liste des paramètres )
+// type Statistiques::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -34,34 +34,34 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Graph::Graph ( const Graph & unGraph )
+Statistiques::Statistiques ( const Statistiques & unStatistiques )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Graph>" << endl;
+    cout << "Appel au constructeur de copie de <Statistiques>" << endl;
 #endif
-} //----- Fin de Graph (constructeur de copie)
+} //----- Fin de Statistiques (constructeur de copie)
 
 
-Graph::Graph ( )
+Statistiques::Statistiques ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Graph>" << endl;
+    cout << "Appel au constructeur de <Statistiques>" << endl;
 #endif
-} //----- Fin de Graph
+} //----- Fin de Statistiques
 
 
-Graph::~Graph ( )
+Statistiques::~Statistiques ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Graph>" << endl;
+    cout << "Appel au destructeur de <Statistiques>" << endl;
 #endif
-} //----- Fin de ~Graph
+} //----- Fin de ~Statistiques
 
 
 //------------------------------------------------------------------ PRIVE
