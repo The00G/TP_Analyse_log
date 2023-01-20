@@ -14,6 +14,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "LogApache.h"

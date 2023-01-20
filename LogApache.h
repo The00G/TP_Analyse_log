@@ -28,6 +28,19 @@ class LogApache
 //----------------------------------------------------------------- PUBLIC
 
 public:
+//----------------------------------------------------- Attributs publiques
+    string ip;
+    string userLogname;
+    string authenticatedUser;
+    string date;
+    int heure;
+    string typeAction;
+    string cibleURL;
+    string httpVersion;
+    int status;
+    int quantiteDonnees; // -1 si anonymisé
+    string refererURL;
+    string navigateurInfo;
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -49,18 +62,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    char * ip;
-    char * userLogname;
-    char * authenticatedUser;
-    char * date;
-    int heure;
-    char * typeAction;
-    char * cibleURL;
-    char * httpVersion;
-    int status;
-    int quantiteDonnees; // -1 si anonymisé
-    char * refererURL;
-    char * navigateurInfo;
+    
 };
 
 //----------------------------- Autres définitions dépendantes de <LogApache>

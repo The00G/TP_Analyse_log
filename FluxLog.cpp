@@ -16,6 +16,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "FluxLog.h"
