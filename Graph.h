@@ -36,11 +36,6 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Graph & operator = ( const Graph & unGraph );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur
