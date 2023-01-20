@@ -62,7 +62,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-map <string, int> URLs;
+unordered_map <string, int> URLs;
 bool graphe;
 bool exclureFichier;
 int heure;

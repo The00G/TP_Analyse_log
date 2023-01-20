@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -c -ansi -pedantic -Wall -std=c++11
 DFLAGS = -DMAP
-OBJ = Main.o Graph.o
+OBJ = Main.o Statistiques.o
 EXE = analog
 
 ifeq ($(MAKECMDGOALS), debug)
