@@ -16,6 +16,7 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
+#include "LogApache.h"
 
 //------------------------------------------------------------- Constantes
 

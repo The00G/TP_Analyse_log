@@ -18,6 +18,7 @@ using namespace std;
 #include <cstring>
 
 //------------------------------------------------------ Include personnel
+#include "FluxLog.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -44,9 +45,9 @@ void FluxLog::LireLog ( )
         char * typeAction = new char[20];
         char * cibleURL = new char[500];
         char * httpVersion = new char[20];
-        char * status = new char[10];
+        char * statusChar = new char[10];
         int status;
-        char * quantiteDonnees = new char[20];
+        char * quantiteDonneesChar = new char[20];
         int quantiteDonnees;
         char * refererURL = new char[500];
         char * navigateurInfo = new char[500];
@@ -65,8 +66,8 @@ void FluxLog::LireLog ( )
         delete(typeAction);
         delete(cibleURL);
         delete(httpVersion);
-        delete(status);
-        delete(quantiteDonnees);
+        delete(statusChar);
+        delete(quantiteDonneesChar);
         delete(refererURL);
         delete(navigateurInfo);
     }
