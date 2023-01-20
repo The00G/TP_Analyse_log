@@ -24,24 +24,74 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-int FluxLog::test ( )
+void FluxLog::LireLog ( )
 // Algorithme :
 //
 {
-    return 1;
+    ifstream stream;
+    stream.open(this->nomFichier);
+
+    if(!stream.fail())
+    {
+        char * tmp = new char[2000];
+        
+        char * ip = new char[20];
+        char * userLogname = new char[50];
+        char * authenticatedUser = new char[50];
+        char * dateEtHeure = new char[30];
+        int date;
+        int heure;
+        char * typeAction = new char[20];
+        char * cibleURL = new char[500];
+        char * httpVersion = new char[20];
+        char * status = new char[10];
+        int status;
+        char * quantiteDonnees = new char[20];
+        int quantiteDonnees;
+        char * refererURL = new char[500];
+        char * navigateurInfo = new char[500];
+
+        while(!stream.eof())
+        {
+            stream.getline(tmp,2000);
+        }
+
+        delete(tmp);
+
+        delete(ip);
+        delete(userLogname);
+        delete(authenticatedUser);
+        delete(dateEtHeure);
+        delete(typeAction);
+        delete(cibleURL);
+        delete(httpVersion);
+        delete(status);
+        delete(quantiteDonnees);
+        delete(refererURL);
+        delete(navigateurInfo);
+    }
+    else
+    {
+        cout << "Le fichier ne peut pas être ouvert !" << endl;
+    }
 } //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-FluxLog::FluxLog ( )
-    : 
+FluxLog::FluxLog ( const char * const nomFichier)
 // Algorithme :
-//
+// Copie le nom du fichier dans l'attribut nomFichier
 {
 #ifdef MAP
     cout << "Appel au constructeur de <FluxLog>" << endl;
 #endif
+
+    int length = strlen(nomFichier);
+    this->nomFichier = new char[length+1];
+
+    strcpy(this->nomFichier, nomFichier);
+
 } //----- Fin de FluxLog
 
 
@@ -52,6 +102,9 @@ FluxLog::~FluxLog ( )
 #ifdef MAP
     cout << "Appel au destructeur de <FluxLog>" << endl;
 #endif
+
+    delete(this->nomFichier);
+
 } //----- Fin de ~FluxLog
 
 

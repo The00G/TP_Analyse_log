@@ -1,5 +1,5 @@
 /*************************************************************************
-        FluxLog  -  lecture d'un fichier de log Apache
+        LogApache  -  conteneur de log au format utilise par Apache
                              -------------------
     début                : 20/01/2023
     copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
@@ -7,9 +7,9 @@
                            elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <FluxLog> (fichier FluxLog.h) ----------
-#if ! defined ( FLUXLOG_H )
-#define FLUXLOG_H
+//---------- Interface de la classe <LogApache> (fichier LogApache.h) ----------
+#if ! defined ( LOGAPACHE_H )
+#define LOGAPACHE_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -18,33 +18,28 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <FluxLog>
+// Rôle de la classe <LogApache>
 //
 //
 //------------------------------------------------------------------------
 
-class FluxLog
+class LogApache
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void LireLog ( );
-    // Mode d'emploi :
-    // 
-    // Contrat :
-    //
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    FluxLog ( const char * const nomFichier );
+    LogApache ( );
     // Mode d'emploi :
     // 
     // Contrat :
     //
 
-    ~FluxLog ( );
+    ~LogApache ( );
     // Mode d'emploi :
     // 
     // Contrat :
@@ -54,11 +49,20 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
-    char * nomFichier;
+    char * ip;
+    char * userLogname;
+    char * authenticatedUser;
+    char * date;
+    int heure;
+    char * typeAction;
+    char * cibleURL;
+    char * httpVersion;
+    int status;
+    int quantiteDonnees; // -1 si anonymisé
+    char * refererURL;
+    char * navigateurInfo;
 };
 
-//----------------------------- Autres définitions dépendantes de <FluxLog>
+//----------------------------- Autres définitions dépendantes de <LogApache>
 
-#endif // FLUXLOG_H
+#endif // LOGAPACHE_H
