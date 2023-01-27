@@ -28,11 +28,13 @@ class Statistiques
 
 public:
 //----------------------------------------------------- Méthodes publiques
-     void Ajouter ( LogApache );
+     void Ajouter ( Connexion );
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    void ExporterGraphe ( string nomFichier );
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -63,10 +65,11 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 unordered_map <string, int> pages;
-unordered_map <string, int> redirections;
+unordered_map <string, int> connexions;
 bool graphe;
 bool exclureFichierSpec;
 int heure;
+int nbConnexions;
 
 };
 

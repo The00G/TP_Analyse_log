@@ -15,9 +15,10 @@ using namespace std;
 #include <iostream>
 #include <unordered_map>
 #include <string>
+#include <ostream>
 
 //------------------------------------------------------ Include personnel
-#include "LogApache.h"
+#include "Connexion.h"
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
@@ -25,20 +26,41 @@ const string EXTENSION_SPECIALES [] = {"png", "bmp","jpg","jpeg","css","js"};
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Statistiques::Ajouter ( LogApache acces )
+void Statistiques::Ajouter ( Connexion c )
 // Algorithme :
 //
 {
     if(exclureFichierSpec) {
         //TODO
     }
-    pages[acces.cibleURL]++;
+    unordered_map<string, int>::iterator it = pages.find(c.cibleURL);
+    if( it == pages.end()) {
+        
+        pages[c.cibleURL].index = nbConnexions++;
+        pages[c.cibleURL].nbAcces = 1;
+    } else {
+        it->nbAcces++;
+    }
+
     if(graphe) {
-        string redirection = acces.refererURL + "\n" + acces.cibleURL;
-        redirections[redirection]++;
+        string redirection = c.refererURL + "\n" + c.cibleURL;
+        connexions[redirection]++;
     }
 
 } //----- Fin de Ajouter
+
+void ExporterGraphe ( string nomFichier )// Algorithme :
+//
+{
+    //ofstream flux;
+    // TODO
+
+    cout << "digraph {" << endl;
+    for(unordered_map <string, int>::const_iterator it = pages.cbegin(); it != pages.cend(); ++it){
+
+    }
+    cout << "}";
+} //----- Fin de ExporterGraphe
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -56,7 +78,7 @@ void Statistiques::Ajouter ( LogApache acces )
 
 
 Statistiques::Statistiques ( bool graphe, bool exclureFichierSpec, int heure )
-        : graphe(graphe), exclureFichierSpec(exclureFichierSpec), heure(heure)
+        : graphe(graphe), exclureFichierSpec(exclureFichierSpec), heure(heure), nbConnexions(0)
 // Algorithme :
 //
 {
