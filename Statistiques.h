@@ -15,10 +15,6 @@
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-struct StatsPage {
-    int index;
-    int nbAcces;
-};
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Statistiques>
@@ -32,13 +28,15 @@ class Statistiques
 
 public:
 //----------------------------------------------------- Méthodes publiques
-     void Ajouter ( Connexion );
+     void Ajouter ( Connexion ) ;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void ExporterGraphe ( string nomFichier );
+    void ExporterGraphe ( string nomFichier ) ;
+
+    void AfficherTopDix ( ) ;
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -68,7 +66,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-unordered_map <string, StatsPage> pages;
+unordered_map <string, int> pages;
 unordered_map <string, int> connexions;
 bool graphe;
 bool exclureFichierSpec;

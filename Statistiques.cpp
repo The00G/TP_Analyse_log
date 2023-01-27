@@ -30,18 +30,15 @@ void Statistiques::Ajouter ( Connexion c )
 // Algorithme :
 //
 {
-    if(exclureFichierSpec) {
-        //TODO
-    }
-    unordered_map<string, StatsPage>::iterator it = pages.find(c.cibleURL);
-    if( it == pages.end()) {
-        
-        pages[c.cibleURL].index = nbConnexions++;
-        pages[c.cibleURL].nbAcces = 1;
-    } else {
-        it->second.nbAcces++;
-    }
-
+    /*if(exclureFichierSpec && EXTENSION_SPECIALES.find(c.extension) != EXTENSION_SPECIALES.end()) {
+        return;
+    }*/
+    if(heure!=-1 && c.heure!=heure) {
+        return;
+    }  
+    pages[c.cibleURL]++;
+    pages[c.refererURL];
+    
     if(graphe) {
         string redirection = c.refererURL + "\n" + c.cibleURL;
         connexions[redirection]++;
@@ -57,18 +54,29 @@ void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 
 
     flux << "digraph {" << endl;
-    for(unordered_map <string, StatsPage>::iterator it = pages.begin(); it != pages.end(); ++it)
+    for(unordered_map <string, int>::iterator it = pages.begin(); it != pages.end(); ++it)
     {
-        flux << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
+        flux << "\"" << it->first << "\"" << endl;
     }
     for(unordered_map <string, int>::iterator it = connexions.begin(); it != connexions.end(); ++it)
     {
-        flux << "node" << pages[it->first.substr(0,it->first.find("\n"))].index 
-             << " -> node" << pages[it->first.substr(it->first.find("\n")+1,it->first.length())].index 
-             << " [label=\"" << it->second << "\"];" << endl;
+        flux << "\"" << it->first.substr(0,it->first.find("\n")) 
+             << "\" -> \"" << it->first.substr(it->first.find("\n")+1,it->first.length()) 
+             << "\" [label=\"" << it->second << "\"];" << endl;
     }
     flux << "}";
 } //----- Fin de ExporterGraphe
+
+void Statistiques::AfficherTopDix ( )// Algorithme :
+//
+{
+    
+    /*for(unordered_map <string, int>::iterator it = pages.begin(); it != pages.end(); ++it)
+    {
+        flux << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
+    }*/
+    
+} //----- Fin de AfficherTopDix
 
 
 //------------------------------------------------- Surcharge d'opérateurs
