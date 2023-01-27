@@ -1,5 +1,5 @@
 /*************************************************************************
-        LogApache  -  conteneur de log au format utilise par Apache
+        Connexion  -  conteneur de log au format utilise par Apache
                              -------------------
     début                : 20/01/2023
     copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
@@ -7,52 +7,53 @@
                            elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <LogApache> (fichier LogApache.h) ----------
-#if ! defined ( LOGAPACHE_H )
-#define LOGAPACHE_H
+//---------- Interface de la classe <Connexion> (fichier Connexion.h) ----------
+#if ! defined ( CONNEXION_H )
+#define CONNEXION_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <LogApache>
+// Rôle de la classe <Connexion>
 //
 //
 //------------------------------------------------------------------------
 
-class LogApache
+class Connexion
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Attributs publiques
-    string ip;
-    string userLogname;
-    string authenticatedUser;
-    string date;
+    std::string ip;
+    std::string userLogname;
+    std::string authenticatedUser;
+    std::string date;
     int heure;
-    string typeAction;
-    string cibleURL;
-    string httpVersion;
+    std::string typeAction;
+    std::string cibleURL;
+    std::string httpVersion;
     int status;
     int quantiteDonnees;
-    string refererURL;
-    string navigateurInfo;
+    std::string refererURL;
+    std::string navigateurInfo;
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    LogApache ( );
+    Connexion ( );
     // Mode d'emploi :
     // 
     // Contrat :
     //
 
-    ~LogApache ( );
+    ~Connexion ( );
     // Mode d'emploi :
     // 
     // Contrat :
@@ -65,6 +66,6 @@ protected:
     
 };
 
-//----------------------------- Autres définitions dépendantes de <LogApache>
+//----------------------------- Autres définitions dépendantes de <Connexion>
 
-#endif // LOGAPACHE_H
+#endif // CONNEXION_H

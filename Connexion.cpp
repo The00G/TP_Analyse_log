@@ -1,5 +1,5 @@
 /*************************************************************************
-        LogApache  -  conteneur de log au format utilise par Apache
+        Connexion  -  conteneur de log au format utilise par Apache
                              -------------------
     début                : 20/01/2023
     copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
@@ -7,7 +7,7 @@
                            elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//-------- Réalisation de la classe <LogApache> (fichier LogApache.cpp) --------
+//-------- Réalisation de la classe <Connexion> (fichier Connexion.cpp) --------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -17,7 +17,7 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "LogApache.h"
+#include "Connexion.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,24 +28,24 @@ using namespace std;
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-LogApache::LogApache ( )
+Connexion::Connexion ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <LogApache>" << endl;
+    cout << "Appel au constructeur de <Connexion>" << endl;
 #endif
-} //----- Fin de LogApache
+} //----- Fin de Connexion
 
 
-LogApache::~LogApache ( )
+Connexion::~Connexion ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <LogApache>" << endl;
+    cout << "Appel au destructeur de <Connexion>" << endl;
 #endif
-} //----- Fin de ~LogApache
+} //----- Fin de ~Connexion
 
 
 //------------------------------------------------------------------ PRIVE
