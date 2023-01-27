@@ -96,7 +96,9 @@ void FluxLog::LireLog ( )
 
             std::getline(stream,navigateurInfo,'"');
         }
+
         
+
     }
     else
     {
