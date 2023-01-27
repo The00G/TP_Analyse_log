@@ -57,7 +57,12 @@ void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 
     cout << "digraph {" << endl;
     for(unordered_map <string, StatsPage>::iterator it = pages.begin(); it != pages.end(); ++it){
-
+        cout << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
+    }
+    for(unordered_map <string, int>::iterator it = connexions.begin(); it != connexions.end(); ++it){
+        cout << "node" << pages[it->first.substr(0,it->first.find("\n"))].index 
+                << " -> node" << pages[it->first.substr(it->first.find("\n")+1,it->first.length())].index 
+                << " [label=\"" << it->second << "\"];" << endl;
     }
     cout << "}";
 } //----- Fin de ExporterGraphe
