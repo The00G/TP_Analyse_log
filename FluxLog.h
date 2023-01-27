@@ -29,7 +29,13 @@ class FluxLog
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void LireLog ( );
+    void LireLog ( ) const;
+    // Mode d'emploi :
+    // 
+    // Contrat :
+    //
+
+    void SetFichier ( const char * const newNomFichier );
     // Mode d'emploi :
     // 
     // Contrat :

@@ -27,7 +27,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void FluxLog::LireLog ( )
+void FluxLog::LireLog ( ) const
 // Algorithme :
 //
 {
@@ -106,12 +106,14 @@ void FluxLog::LireLog ( )
             transfert.date = date;
             transfert.heure = heure;
             transfert.typeAction = typeAction;
-            transfert.cibleURL;
-            transfert.httpVersion;
+            transfert.cibleURL = cibleURL;
+            transfert.httpVersion = httpVersion;
             transfert.status = status;
             transfert.quantiteDonnees = quantiteDonnees;
             transfert.refererURL = refererURL;
             transfert.navigateurInfo = navigateurInfo;
+            
+
         }
 
     }
@@ -120,6 +122,18 @@ void FluxLog::LireLog ( )
         cout << "Le fichier ne peut pas être ouvert !" << endl;
     }
 } //----- Fin de Méthode
+
+void FluxLog::SetFichier ( const char * const newNomFichier )
+// Algorithme :
+//
+{
+    int length = strlen(newNomFichier);
+    delete(this->nomFichier);
+    this->nomFichier = new char[length+1];
+
+    strcpy(this->nomFichier, newNomFichier);
+} //----- Fin de Méthode
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 

@@ -7,6 +7,10 @@ using namespace std;
 #include "Statistiques.h"
 
 int main() {
-    cout << "TODO : main.cpp" << endl;
+    cout << "main.cpp" << endl;
+    char * fichier = "";
+
+
+    
     return 0;
 }
