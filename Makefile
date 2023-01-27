@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -c -ansi -pedantic -Wall -std=c++11
 DFLAGS = -DMAP
-OBJ = Main.o Statistiques.o FluxLog.o LogApache.o
+OBJ = Main.o Statistiques.o FluxLog.o Connexion.o
 EXE = analog
 
 ifeq ($(MAKECMDGOALS), debug)
@@ -19,7 +19,7 @@ $(EXE) : $(OBJ)
 Main.o : Statistiques.h 
 Statistiques.o : Statistiques.h
 FluxLog.o : FluxLog.h
-LogApache.o : LogApache.h
+Connexion.o : Connexion.h
 
 .PHONY : remake clean debug
 
