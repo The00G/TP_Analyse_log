@@ -96,6 +96,8 @@ void FluxLog::LireLog ( ) const
             std::getline(stream,tmp,'"');
 
             std::getline(stream,refererURL,'"');
+            // A FAIRE: retirer ce qu'il y a derrière les '?' et ';'
+            // enlever 'http://intranet-if.insa-lyon.fr' devant le referer
 
             std::getline(stream,tmp,'"');
 
