@@ -15,7 +15,7 @@ using namespace std;
 #include <iostream>
 #include <unordered_map>
 #include <string>
-#include <ostream>
+#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "Connexion.h"
@@ -52,19 +52,22 @@ void Statistiques::Ajouter ( Connexion c )
 void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 //
 {
-    //ofstream flux;
-    // TODO
+    ofstream flux;
+    flux.open( nomFichier );
 
-    cout << "digraph {" << endl;
-    for(unordered_map <string, StatsPage>::iterator it = pages.begin(); it != pages.end(); ++it){
-        cout << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
+
+    flux << "digraph {" << endl;
+    for(unordered_map <string, StatsPage>::iterator it = pages.begin(); it != pages.end(); ++it)
+    {
+        flux << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
     }
-    for(unordered_map <string, int>::iterator it = connexions.begin(); it != connexions.end(); ++it){
-        cout << "node" << pages[it->first.substr(0,it->first.find("\n"))].index 
-                << " -> node" << pages[it->first.substr(it->first.find("\n")+1,it->first.length())].index 
-                << " [label=\"" << it->second << "\"];" << endl;
+    for(unordered_map <string, int>::iterator it = connexions.begin(); it != connexions.end(); ++it)
+    {
+        flux << "node" << pages[it->first.substr(0,it->first.find("\n"))].index 
+             << " -> node" << pages[it->first.substr(it->first.find("\n")+1,it->first.length())].index 
+             << " [label=\"" << it->second << "\"];" << endl;
     }
-    cout << "}";
+    flux << "}";
 } //----- Fin de ExporterGraphe
 
 
