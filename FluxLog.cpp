@@ -20,6 +20,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "FluxLog.h"
+#include "Connexion.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -95,9 +96,23 @@ void FluxLog::LireLog ( )
             std::getline(stream,tmp,'"');
 
             std::getline(stream,navigateurInfo,'"');
-        }
 
-        
+
+            Connexion transfert;
+
+            transfert.ip = ip;
+            transfert.userLogname = userLogname;
+            transfert.authenticatedUser = authenticatedUser;
+            transfert.date = date;
+            transfert.heure = heure;
+            transfert.typeAction = typeAction;
+            transfert.cibleURL;
+            transfert.httpVersion;
+            transfert.status = status;
+            transfert.quantiteDonnees = quantiteDonnees;
+            transfert.refererURL = refererURL;
+            transfert.navigateurInfo = navigateurInfo;
+        }
 
     }
     else
