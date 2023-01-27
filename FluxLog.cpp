@@ -35,55 +35,68 @@ void FluxLog::LireLog ( )
 
     if(!stream.fail())
     {
-        char tmp = new char[2000];
+        string tmp;
         
-        string ip[20];
-        char userLogname[50];
-        char authenticatedUser[50];
-        char dateEtHeure[30];
-        int date;
+        string ip;
+        string userLogname;
+        string authenticatedUser;
+        string date;
+        string heureStr;
         int heure;
-        char typeAction[20];
-        char cibleURL[500];
-        char httpVersion[20];
-        char statusChar[10];
+        string typeAction;
+        string cibleURL;
+        string httpVersion;
+        string statusStr;
         int status;
-        char quantiteDonneesChar[20];
+        string quantiteDonneesStr;
         int quantiteDonnees;
-        char refererURL[500];
-        char navigateurInfo[500];
+        string refererURL;
+        string navigateurInfo;
 
         while(!stream.eof())
         {
             std::getline(stream,ip,' ');
+            std::getline(stream,userLogname,' ');
+            std::getline(stream,authenticatedUser,' ');
 
-            stream.getline(authenticatedUser,);
+            std::getline(stream,tmp,'[');
 
+            std::getline(stream,date,':');
+            std::getline(stream,heureStr,':');
+            // Conversion du string en int
+            heure = stoi(heureStr);
 
+            std::getline(stream,tmp,'"');
 
+            std::getline(stream,typeAction,' ');
+            std::getline(stream,cibleURL,' ');
+            std::getline(stream,httpVersion,'"');
 
+            std::getline(stream,tmp,' ');
 
+            std::getline(stream,statusStr,' ');
+            status = stoi(statusStr);
+            std::getline(stream,quantiteDonneesStr,' ');
+            if(quantiteDonneesStr == "-")
+            {
+                // Données anonymisées
+                quantiteDonnees = -1;
+            }
+            else
+            {
+                // Conversion des données en int
+                quantiteDonnees = stoi(quantiteDonneesStr);
+            }
 
+            std::getline(stream,tmp,'"');
 
+            std::getline(stream,refererURL,'"');
 
+            std::getline(stream,tmp,'"');
 
-
-
+            std::getline(stream,navigateurInfo,'"');
         }
-
-        delete(tmp);
-
-        delete(ip);
-        delete(userLogname);
-        delete(authenticatedUser);
-        delete(dateEtHeure);
-        delete(typeAction);
-        delete(cibleURL);
-        delete(httpVersion);
-        delete(statusChar);
-        delete(quantiteDonneesChar);
-        delete(refererURL);
-        delete(navigateurInfo);
+        
     }
     else
     {

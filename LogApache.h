@@ -12,6 +12,7 @@
 #define LOGAPACHE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -29,18 +30,18 @@ class LogApache
 
 public:
 //----------------------------------------------------- Attributs publiques
-    string ip;
-    string userLogname;
-    string authenticatedUser;
-    string date;
+    std::string ip;
+    std::string userLogname;
+    std::string authenticatedUser;
+    std::string date;
     int heure;
-    string typeAction;
-    string cibleURL;
-    string httpVersion;
+    std::string typeAction;
+    std::string cibleURL;
+    std::string httpVersion;
     int status;
     int quantiteDonnees;
-    string refererURL;
-    string navigateurInfo;
+    std::string refererURL;
+    std::string navigateurInfo;
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
