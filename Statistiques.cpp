@@ -33,13 +33,13 @@ void Statistiques::Ajouter ( Connexion c )
     if(exclureFichierSpec) {
         //TODO
     }
-    unordered_map<string, int>::iterator it = pages.find(c.cibleURL);
+    unordered_map<string, StatsPage>::iterator it = pages.find(c.cibleURL);
     if( it == pages.end()) {
         
         pages[c.cibleURL].index = nbConnexions++;
         pages[c.cibleURL].nbAcces = 1;
     } else {
-        it->nbAcces++;
+        it->second.nbAcces++;
     }
 
     if(graphe) {
@@ -49,14 +49,14 @@ void Statistiques::Ajouter ( Connexion c )
 
 } //----- Fin de Ajouter
 
-void ExporterGraphe ( string nomFichier )// Algorithme :
+void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 //
 {
     //ofstream flux;
     // TODO
 
     cout << "digraph {" << endl;
-    for(unordered_map <string, int>::const_iterator it = pages.cbegin(); it != pages.cend(); ++it){
+    for(unordered_map <string, StatsPage>::iterator it = pages.begin(); it != pages.end(); ++it){
 
     }
     cout << "}";

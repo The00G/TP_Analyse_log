@@ -15,6 +15,10 @@
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+struct StatsPage {
+    int index;
+    int nbAcces;
+};
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Statistiques>
@@ -64,7 +68,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-unordered_map <string, int> pages;
+unordered_map <string, StatsPage> pages;
 unordered_map <string, int> connexions;
 bool graphe;
 bool exclureFichierSpec;
