@@ -37,6 +37,7 @@ public:
     int heure;
     std::string typeAction;
     std::string cibleURL;
+    std::string extension;
     std::string httpVersion;
     int status;
     int quantiteDonnees;

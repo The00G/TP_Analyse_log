@@ -46,6 +46,7 @@ void FluxLog::LireLog ( ) const
         int heure;
         string typeAction;
         string cibleURL;
+        string extension;
         string httpVersion;
         string statusStr;
         int status;
@@ -71,6 +72,9 @@ void FluxLog::LireLog ( ) const
 
             std::getline(stream,typeAction,' ');
             std::getline(stream,cibleURL,' ');
+            // Isolation de l'extension
+            string extension = std::string(cibleURL.begin() + cibleURL.find('.'), 
+                                           cibleURL.end());
             std::getline(stream,httpVersion,'"');
 
             std::getline(stream,tmp,' ');
@@ -107,6 +111,7 @@ void FluxLog::LireLog ( ) const
             transfert.heure = heure;
             transfert.typeAction = typeAction;
             transfert.cibleURL = cibleURL;
+            transfert.extension = extension;
             transfert.httpVersion = httpVersion;
             transfert.status = status;
             transfert.quantiteDonnees = quantiteDonnees;
