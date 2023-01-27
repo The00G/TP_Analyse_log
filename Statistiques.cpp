@@ -21,7 +21,7 @@ using namespace std;
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
-
+const string EXTENSION_SPECIALES [] = {"png", "bmp","jpg","jpeg","css","js"};
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -29,7 +29,14 @@ void Statistiques::Ajouter ( LogApache acces )
 // Algorithme :
 //
 {
+    if(exclureFichierSpec) {
+        //TODO
+    }
     pages[acces.cibleURL]++;
+    if(graphe) {
+        string redirection = acces.refererURL + "\n" + acces.cibleURL;
+        redirections[redirection]++;
+    }
 
 } //----- Fin de Ajouter
 
@@ -48,8 +55,8 @@ void Statistiques::Ajouter ( LogApache acces )
 } //----- Fin de Statistiques (constructeur de copie)*/
 
 
-Statistiques::Statistiques ( bool graphe, bool exclureFichier, int heure )
-        : graphe(graphe), exclureFichier(exclureFichier), heure(heure)
+Statistiques::Statistiques ( bool graphe, bool exclureFichierSpec, int heure )
+        : graphe(graphe), exclureFichierSpec(exclureFichierSpec), heure(heure)
 // Algorithme :
 //
 {

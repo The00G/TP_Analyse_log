@@ -44,7 +44,7 @@ public:
     // Contrat :
     //
 
-    Statistiques ( bool graphe = false, bool exclureFichier = false, int heure = -1);
+    Statistiques ( bool graphe = false, bool exclureFichierSpec = false, int heure = -1);
     // Mode d'emploi :
     //
     // Contrat :
@@ -63,8 +63,9 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 unordered_map <string, int> pages;
+unordered_map <string, int> redirections;
 bool graphe;
-bool exclureFichier;
+bool exclureFichierSpec;
 int heure;
 
 };
