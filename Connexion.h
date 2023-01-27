@@ -1,5 +1,5 @@
 /*************************************************************************
-        LogApache  -  conteneur de log au format utilise par Apache
+        Connexion  -  conteneur de log au format utilise par Apache
                              -------------------
     début                : 20/01/2023
     copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
@@ -7,9 +7,9 @@
                            elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <LogApache> (fichier LogApache.h) ----------
-#if ! defined ( LOGAPACHE_H )
-#define LOGAPACHE_H
+//---------- Interface de la classe <Connexion> (fichier Connexion.h) ----------
+#if ! defined ( CONNEXION_H )
+#define CONNEXION_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
@@ -19,12 +19,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <LogApache>
+// Rôle de la classe <Connexion>
 //
 //
 //------------------------------------------------------------------------
 
-class LogApache
+class Connexion
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -47,13 +47,13 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    LogApache ( );
+    Connexion ( );
     // Mode d'emploi :
     // 
     // Contrat :
     //
 
-    ~LogApache ( );
+    ~Connexion ( );
     // Mode d'emploi :
     // 
     // Contrat :
@@ -66,6 +66,6 @@ protected:
     
 };
 
-//----------------------------- Autres définitions dépendantes de <LogApache>
+//----------------------------- Autres définitions dépendantes de <Connexion>
 
-#endif // LOGAPACHE_H
+#endif // CONNEXION_H
