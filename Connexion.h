@@ -43,7 +43,13 @@ public:
     int quantiteDonnees;
     std::string refererURL;
     std::string navigateurInfo;
+
 //----------------------------------------------------- Méthodes publiques
+    void Afficher ( int fullInfo = 0 ) const;
+    // Mode d'emploi :
+    // 
+    // Contrat :
+    //
 
 //------------------------------------------------- Surcharge d'opérateurs
 

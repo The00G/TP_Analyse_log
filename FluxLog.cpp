@@ -34,6 +34,8 @@ void FluxLog::LireLog ( ) const
     ifstream stream;
     stream.open(this->nomFichier);
 
+    //cout << "FluxLog LireLog" << endl;
+
     if(!stream.fail())
     {
         string tmp;
@@ -103,6 +105,7 @@ void FluxLog::LireLog ( ) const
 
             std::getline(stream,navigateurInfo,'"');
 
+            std::getline(stream,tmp);
 
             Connexion transfert;
 
@@ -120,7 +123,7 @@ void FluxLog::LireLog ( ) const
             transfert.refererURL = refererURL;
             transfert.navigateurInfo = navigateurInfo;
             
-
+            transfert.Afficher();
         }
 
     }
