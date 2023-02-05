@@ -13,12 +13,9 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <unordered_map>
-#include <string>
 #include <fstream>
 
 //------------------------------------------------------ Include personnel
-#include "Connexion.h"
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
@@ -33,20 +30,21 @@ void Statistiques::Ajouter ( Connexion c )
     /*if(exclureFichierSpec && EXTENSION_SPECIALES.find(c.extension) != EXTENSION_SPECIALES.end()) {
         return;
     }*/
-    if(heure!=-1 && c.heure!=heure) {
+    if(this->heure!=-1 && c.heure!=this->heure) {
         return;
     }  
-    pages[c.cibleURL]++;
-    pages[c.refererURL];
+    this->pages[c.cibleURL]++;
+    this->pages[c.refererURL];
     
     if(graphe) {
         string redirection = c.refererURL + "\n" + c.cibleURL;
-        connexions[redirection]++;
+        this->connexions[redirection]++;
     }
 
 } //----- Fin de Ajouter
 
-void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
+void Statistiques::ExporterGraphe ( string nomFichier )
+// Algorithme :
 //
 {
     ofstream flux;
@@ -54,11 +52,11 @@ void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 
 
     flux << "digraph {" << endl;
-    for(unordered_map <string, int>::iterator it = pages.begin(); it != pages.end(); ++it)
+    for(unordered_map <string, int>::iterator it = this->pages.begin(); it != this->pages.end(); ++it)
     {
         flux << "\"" << it->first << "\"" << endl;
     }
-    for(unordered_map <string, int>::iterator it = connexions.begin(); it != connexions.end(); ++it)
+    for(unordered_map <string, int>::iterator it = this->connexions.begin(); it != this->connexions.end(); ++it)
     {
         flux << "\"" << it->first.substr(0,it->first.find("\n")) 
              << "\" -> \"" << it->first.substr(it->first.find("\n")+1,it->first.length()) 
@@ -70,14 +68,34 @@ void Statistiques::ExporterGraphe ( string nomFichier )// Algorithme :
 void Statistiques::AfficherTopDix ( )// Algorithme :
 //
 {
-    
-    /*for(unordered_map <string, int>::iterator it = pages.begin(); it != pages.end(); ++it)
+    this->topDix.clear();
+    unordered_map <string, int>::iterator itPages = this->pages.begin();
+    this->topDix.push_front(itPages->first);
+    ++itPages;
+    while( itPages != this->pages.end() && this->topDix.size() < 10)
     {
-        flux << "node" << it->second.index << " [label=\"" << it->first << "l\"];" << endl;
-    }*/
-    
+        int nbRedirections = this->pages[itPages->first];
+        list<string>::iterator itTop = this->topDix.begin();
+        while(this->pages[*itTop] < nbRedirections) ++itTop;
+        this->topDix.insert(itTop,itPages->first);
+        ++itPages;
+    }
+    while (itPages != this->pages.end())
+    {
+        int nbRedirections = this->pages[itPages->first];
+        list<string>::iterator itTop = this->topDix.begin();
+        if(nbRedirections > this->pages[*itTop])
+        {
+            do {++itTop;} while(this->pages[*itTop] < nbRedirections);
+            this->topDix.insert(itTop,itPages->first);
+            this->topDix.pop_front();
+        }
+        ++itPages;
+    }
+    for(list<string>::reverse_iterator rit = this->topDix.rbegin(); rit != this->topDix.rend(); ++rit) {
+        cout << *rit << " (" << this->pages[*rit] << " hits)" << endl;
+    }
 } //----- Fin de AfficherTopDix
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 

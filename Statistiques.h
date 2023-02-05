@@ -11,6 +11,10 @@
 #define STATISTIQUES_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <unordered_map>
+#include <string>
+#include <list>
+#include "Connexion.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -68,6 +72,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 unordered_map <string, int> pages;
 unordered_map <string, int> connexions;
+list <string> topDix;
 bool graphe;
 bool exclureFichierSpec;
 int heure;
