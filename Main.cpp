@@ -23,10 +23,11 @@ int main( int argc, char * argv[] ) {
     char * fichierGraph = "test_export.txt";
 
     FluxLog * flux = new FluxLog(fichierLog);
-    Statistiques * stats = new Statistiques();
+    Statistiques * stats = new Statistiques(true, false, -1);
 
     flux->LireLog(stats);
     stats->ExporterGraphe(fichierGraph);
+    stats->AfficherTopDix();
 
     delete(flux);
     delete(stats);
