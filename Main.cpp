@@ -17,14 +17,19 @@ int main( int argc, char * argv[] ) {
         cout << "argument " << i << ": ";
         cout << argv[i] << endl;
     }
+    cout << endl;
 
     char * fichierLog = "test_log.txt";
+    char * fichierGraph = "test_export.txt";
 
     FluxLog * flux = new FluxLog(fichierLog);
+    Statistiques * stats = new Statistiques();
 
-    flux->LireLog();
+    flux->LireLog(stats);
+    stats->ExporterGraphe(fichierGraph);
 
     delete(flux);
+    delete(stats);
 
     return 0;
 }

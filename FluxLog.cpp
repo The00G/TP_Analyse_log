@@ -27,7 +27,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void FluxLog::LireLog ( ) const
+void FluxLog::LireLog ( Statistiques * stat ) const
 // Algorithme :
 //
 {
@@ -124,6 +124,7 @@ void FluxLog::LireLog ( ) const
             transfert.navigateurInfo = navigateurInfo;
             
             transfert.Afficher();
+            stat->Ajouter(transfert);
         }
 
     }

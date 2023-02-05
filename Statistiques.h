@@ -32,7 +32,7 @@ class Statistiques
 
 public:
 //----------------------------------------------------- Méthodes publiques
-     void Ajouter ( Connexion ) ;
+     void Ajouter ( Connexion c ) ;
     // Mode d'emploi :
     //
     // Contrat :
