@@ -70,14 +70,17 @@ void Statistiques::AfficherTopDix ( )// Algorithme :
 {
     this->topDix.clear();
     unordered_map <string, int>::iterator itPages = this->pages.begin();
+    while(itPages != this->pages.end() && this->pages[itPages->first]==0) ++itPages;
     this->topDix.push_front(itPages->first);
     ++itPages;
     while( itPages != this->pages.end() && this->topDix.size() < 10)
     {
         int nbRedirections = this->pages[itPages->first];
-        list<string>::iterator itTop = this->topDix.begin();
-        while(this->pages[*itTop] < nbRedirections) ++itTop;
-        this->topDix.insert(itTop,itPages->first);
+        if(nbRedirections > 0) {
+            list<string>::iterator itTop = this->topDix.begin();
+            while( itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections) ++itTop;
+            this->topDix.insert(itTop,itPages->first);
+        }
         ++itPages;
     }
     while (itPages != this->pages.end())
@@ -86,7 +89,7 @@ void Statistiques::AfficherTopDix ( )// Algorithme :
         list<string>::iterator itTop = this->topDix.begin();
         if(nbRedirections > this->pages[*itTop])
         {
-            do {++itTop;} while(this->pages[*itTop] < nbRedirections);
+            do {++itTop;} while(itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections);
             this->topDix.insert(itTop,itPages->first);
             this->topDix.pop_front();
         }
