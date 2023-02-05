@@ -12,6 +12,7 @@
 #define FLUXLOG_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
@@ -30,7 +31,7 @@ class FluxLog
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void LireLog ( Statistiques * stat ) const;
+    void LireLog ( Statistiques * stat, string prefixeAEnlever = "" ) const;
     // Mode d'emploi :
     // 
     // Contrat :

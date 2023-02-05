@@ -27,14 +27,14 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void FluxLog::LireLog ( Statistiques * stat ) const
+void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
 // Algorithme :
 //
 {
     ifstream stream;
     stream.open(this->nomFichier);
 
-    //cout << "FluxLog LireLog" << endl;
+    int taillePrefixe = prefixeAEnlever.length();
 
     if(!stream.fail())
     {
@@ -98,8 +98,22 @@ void FluxLog::LireLog ( Statistiques * stat ) const
             std::getline(stream,tmp,'"');
 
             std::getline(stream,refererURL,'"');
-            // A FAIRE: retirer ce qu'il y a derrière les '?' et ';'
-            // enlever 'http://intranet-if.insa-lyon.fr' devant le referer
+            // Retire le début de l'url spécifié lors de l'appel de la fonction
+            if(refererURL.find(prefixeAEnlever) != string::npos)
+            {
+                refererURL.erase(0, taillePrefixe);
+            }
+            // Retire ce qu'il y a derrière les '?' et ';' si il y en a
+            long unsigned int ptInterro = refererURL.find("?");
+            long unsigned int ptVirgule = refererURL.find(";");
+            if(ptInterro != string::npos)
+            {
+                refererURL.erase(ptInterro, string::npos);
+            }
+            else if(ptVirgule != string::npos)
+            {
+                refererURL.erase(ptVirgule, string::npos);
+            }
 
             std::getline(stream,tmp,'"');
 

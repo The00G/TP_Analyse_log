@@ -2,7 +2,6 @@ using namespace std;
 
 #include <iostream>
 #include <unordered_map>
-#include <string>
 #include "FluxLog.h"
 #include "Connexion.h"
 #include "Statistiques.h"
@@ -22,10 +21,12 @@ int main( int argc, char * argv[] ) {
     char * fichierLog = "test_log.txt";
     char * fichierGraph = "test_export.txt";
 
+    string prefixe = "http://intranet-if.insa-lyon.fr";
+
     FluxLog * flux = new FluxLog(fichierLog);
     Statistiques * stats = new Statistiques(true, false, -1);
 
-    flux->LireLog(stats);
+    flux->LireLog(stats, prefixe);
     stats->ExporterGraphe(fichierGraph);
     stats->AfficherTopDix();
 
