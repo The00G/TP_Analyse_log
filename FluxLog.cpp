@@ -62,9 +62,6 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
 
         while(!stream.eof())
         {
-            ptInterro = string::npos;
-            ptVirgule = string::npos;
-
             std::getline(stream,ip,' ');
             std::getline(stream,userLogname,' ');
             std::getline(stream,authenticatedUser,' ');
@@ -120,8 +117,6 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
             {
                 refererURL.erase(0, taillePrefixe);
             }
-            ptInterro = string::npos;
-            ptVirgule = string::npos;
             // Retire ce qu'il y a derrière les '?' et ';' si il y en a
             ptInterro = refererURL.find('?');
             ptVirgule = refererURL.find(';');
