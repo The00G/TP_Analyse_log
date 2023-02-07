@@ -14,6 +14,7 @@
 using namespace std;
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 //------------------------------------------------------ Include personnel
 #include "Statistiques.h"
@@ -27,9 +28,9 @@ void Statistiques::Ajouter ( Connexion c )
 // Algorithme :
 //
 {
-    /*if(exclureFichierSpec && EXTENSION_SPECIALES.find(c.extension) != EXTENSION_SPECIALES.end()) {
+    if(exclureFichierSpec && find(begin(EXTENSION_SPECIALES),end(EXTENSION_SPECIALES),c.extension) != end(EXTENSION_SPECIALES)) {
         return;
-    }*/
+    }
     if(this->heure!=-1 && c.heure!=this->heure) {
         return;
     }  
