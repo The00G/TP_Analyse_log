@@ -24,7 +24,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Connexion::Afficher ( int fullInfo ) const
+void Connexion::Afficher ( bool fullInfo ) const
 // Algorithme :
 //
 {

@@ -12,6 +12,7 @@
 #define CONNEXION_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <string>
 
 //------------------------------------------------------------- Constantes
@@ -30,22 +31,22 @@ class Connexion
 
 public:
 //----------------------------------------------------- Attributs publiques
-    std::string ip;
-    std::string userLogname;
-    std::string authenticatedUser;
-    std::string date;
+    string ip;
+    string userLogname;
+    string authenticatedUser;
+    string date;
     int heure;
-    std::string typeAction;
-    std::string cibleURL;
-    std::string extension;
-    std::string httpVersion;
+    string typeAction;
+    string cibleURL;
+    string extension;
+    string httpVersion;
     int status;
     int quantiteDonnees;
-    std::string refererURL;
-    std::string navigateurInfo;
+    string refererURL;
+    string navigateurInfo;
 
 //----------------------------------------------------- Méthodes publiques
-    void Afficher ( int fullInfo = 0 ) const;
+    void Afficher ( bool fullInfo = false ) const;
     // Mode d'emploi :
     // 
     // Contrat :

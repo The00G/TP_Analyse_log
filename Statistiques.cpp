@@ -20,7 +20,7 @@ using namespace std;
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
-const string EXTENSION_SPECIALES [] = {"png", "bmp","jpg","jpeg","css","js"};
+const string EXTENSION_SPECIALES [] = {".png", ".bmp",".jpg",".jpeg",".css",".js"};
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
