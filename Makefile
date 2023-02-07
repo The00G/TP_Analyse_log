@@ -11,6 +11,7 @@ endif
 $(EXE) : $(OBJ)
 	@echo edition des liens
 	$(CC) $(OBJ) -o $(EXE)
+	cp $(EXE) ./Tests/bin
 
 %.o : %.cpp
 	@echo compilation de $<
