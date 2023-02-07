@@ -57,8 +57,14 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
         string refererURL;
         string navigateurInfo;
 
+        long unsigned int ptInterro;
+        long unsigned int ptVirgule;
+
         while(!stream.eof())
         {
+            ptInterro = string::npos;
+            ptVirgule = string::npos;
+
             std::getline(stream,ip,' ');
             std::getline(stream,userLogname,' ');
             std::getline(stream,authenticatedUser,' ');
@@ -74,6 +80,17 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
 
             std::getline(stream,typeAction,' ');
             std::getline(stream,cibleURL,' ');
+            // Retire ce qu'il y a derrière les '?' et ';' si il y en a
+            ptInterro = cibleURL.find('?');
+            ptVirgule = cibleURL.find(';');
+            if(ptInterro != string::npos)
+            {
+                cibleURL.erase(ptInterro, string::npos);
+            }
+            else if(ptVirgule != string::npos)
+            {
+                cibleURL.erase(ptVirgule, string::npos);
+            }
             // Isolation de l'extension
             string extension = std::string(cibleURL.begin() + cibleURL.find('.'), 
                                            cibleURL.end());
@@ -103,9 +120,11 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
             {
                 refererURL.erase(0, taillePrefixe);
             }
+            ptInterro = string::npos;
+            ptVirgule = string::npos;
             // Retire ce qu'il y a derrière les '?' et ';' si il y en a
-            long unsigned int ptInterro = refererURL.find("?");
-            long unsigned int ptVirgule = refererURL.find(";");
+            ptInterro = refererURL.find('?');
+            ptVirgule = refererURL.find(';');
             if(ptInterro != string::npos)
             {
                 refererURL.erase(ptInterro, string::npos);
@@ -137,10 +156,9 @@ void FluxLog::LireLog ( Statistiques * stat, string prefixeAEnlever ) const
             transfert.refererURL = refererURL;
             transfert.navigateurInfo = navigateurInfo;
             
-            transfert.Afficher();
+            //transfert.Afficher();
             stat->Ajouter(transfert);
         }
-
     }
     else
     {

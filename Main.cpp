@@ -10,12 +10,6 @@ using namespace std;
 
 int main( int argc, char * argv[] ) {
     int i;
-    for(i=0; i<argc; ++i)
-    {
-        cout << "argument " << i << ": ";
-        cout << argv[i] << endl;
-    }
-    cout << endl;
 
     string prefixe = "http://intranet-if.insa-lyon.fr";
 
@@ -32,20 +26,22 @@ int main( int argc, char * argv[] ) {
     {
         if(strcmp(argv[i], "-g") == 0)
         {
-            cout << "-g detecte" << endl;
             exporterGraph = true;
             fichierGraph = argv[i+1];
             ++i;
         }
         else if(strcmp(argv[i], "-e") == 0)
         {
-            cout << "-e detecte" << endl;
             exclusionImages = true;
         }
         else if(strcmp(argv[i], "-t") == 0)
         {
-            cout << "-t detecte" << endl;
             heure = stoi(argv[i+1]);
+            if(!(0<=heure && heure<=23))
+            {
+                cout << "L'heure n'est pas valide !" << endl;
+                return 0;
+            }
             ++i;
         }
         else
@@ -53,20 +49,18 @@ int main( int argc, char * argv[] ) {
             cout << "Une des commandes n'est pas valide !" << endl;
             cout << "Les commandes valides sont:" << endl;
 
-            cout << "-g nomfichier.dot Pour indiquer l'export ";
+            cout << "-g nomfichier.dot  Pour indiquer l'export ";
             cout << "d'un graphe" << endl;
 
-            cout << "-e Pour exclure les documents qui ont une ";
+            cout << "-e                 Pour exclure les documents qui ont une ";
             cout << "extension de type image, css ou javascript" << endl;
 
-            cout << "-t heure Pour ne prendre en compte que les ";
+            cout << "-t heure           Pour ne prendre en compte que les ";
             cout << "hits qui ont eu lieu lors d'une heure spécifique" << endl;
             
             return 0;
         }
     }
-    cout << endl;
-
 
     FluxLog * flux = new FluxLog(fichierLog);
     Statistiques * stats = new Statistiques(exporterGraph, exclusionImages, heure);

@@ -33,7 +33,8 @@ void Statistiques::Ajouter ( Connexion c )
     }
     if(this->heure!=-1 && c.heure!=this->heure) {
         return;
-    }  
+    }
+    
     this->pages[c.cibleURL]++;
     this->pages[c.refererURL];
     

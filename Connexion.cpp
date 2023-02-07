@@ -44,6 +44,7 @@ void Connexion::Afficher ( bool fullInfo ) const
         //cout << "ip : " << ip << endl;
         cout << "heure : " << heure << endl;
         cout << "cibleURL : " << cibleURL << endl;
+        cout << "extension : " << extension << endl;
         cout << "refererURL : " << refererURL << endl;
         //cout << "status : " << status << endl;
         //cout << "quantiteDonnees : " << quantiteDonnees << endl;
