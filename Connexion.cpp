@@ -41,12 +41,12 @@ void Connexion::Afficher ( int fullInfo ) const
     else
     {
         cout << "Informations basiques de la connexion :" << endl;
-        cout << "ip : " << ip << endl;
+        //cout << "ip : " << ip << endl;
         cout << "heure : " << heure << endl;
         cout << "cibleURL : " << cibleURL << endl;
         cout << "refererURL : " << refererURL << endl;
-        cout << "status : " << status << endl;
-        cout << "quantiteDonnees : " << quantiteDonnees << endl;
+        //cout << "status : " << status << endl;
+        //cout << "quantiteDonnees : " << quantiteDonnees << endl;
         cout << endl;
     }
 
