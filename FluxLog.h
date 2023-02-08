@@ -12,8 +12,13 @@
 #define FLUXLOG_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <iostream>
+#include <fstream>
+#include <cstring>
 #include <string>
 #include "Statistiques.h"
+#include "Connexion.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -31,13 +36,7 @@ class FluxLog
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void LireLog ( Statistiques * stat, string prefixeAEnlever = "" ) const;
-    // Mode d'emploi :
-    // 
-    // Contrat :
-    //
-
-    void SetFichier ( const char * const newNomFichier );
+    void LireLog ( ifstream & stream, Statistiques & stat, string prefixeAEnlever = "" ) const;
     // Mode d'emploi :
     // 
     // Contrat :
@@ -46,7 +45,7 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    FluxLog ( const char * const nomFichier );
+    FluxLog ( );
     // Mode d'emploi :
     // 
     // Contrat :
@@ -64,7 +63,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    char * nomFichier;
+
 };
 
 //----------------------------- Autres définitions dépendantes de <FluxLog>
