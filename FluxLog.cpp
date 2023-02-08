@@ -140,7 +140,9 @@ void FluxLog::LireLog ( ifstream & stream, Statistiques & stat, string prefixeAE
         transfert.refererURL = refererURL;
         transfert.navigateurInfo = navigateurInfo;
         
-        //transfert.Afficher();
+        #ifdef MAP
+            transfert.Afficher();
+        #endif
         stat.Ajouter(transfert);
     }
 } //----- Fin de LireLog

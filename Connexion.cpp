@@ -29,23 +29,27 @@ void Connexion::Afficher ( bool fullInfo ) const
     if(fullInfo)
     {
         cout << "Informations exhaustives de la connexion :" << endl;
-        cout << ip << " " << userLogname << " " << authenticatedUser << " ";
-        cout << date << " " << heure << " " << typeAction << " ";
-        cout << cibleURL << " " << extension << " " << httpVersion << " ";
-        cout << status << " " << quantiteDonnees << " " << refererURL << " "; 
-        cout << navigateurInfo << endl;
-        cout << endl;
+        cout << ip << " ";
+        cout << userLogname << " ";
+        cout << authenticatedUser << " ";
+        cout << date << " ";
+        cout << heure << " ";
+        cout << typeAction << " ";
+        cout << cibleURL << " ";
+        cout << extension << " ";
+        cout << httpVersion << " ";
+        cout << status << " ";
+        cout << quantiteDonnees << " ";
+        cout << refererURL << " "; 
+        cout << navigateurInfo;
+        cout << endl << endl;
     }
     else
     {
         cout << "Informations basiques de la connexion :" << endl;
-        //cout << "ip : " << ip << endl;
         cout << "heure : " << heure << endl;
         cout << "cibleURL : " << cibleURL << endl;
-        cout << "extension : " << extension << endl;
         cout << "refererURL : " << refererURL << endl;
-        //cout << "status : " << status << endl;
-        //cout << "quantiteDonnees : " << quantiteDonnees << endl;
         cout << endl;
     }
 
