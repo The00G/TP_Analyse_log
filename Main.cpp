@@ -47,7 +47,16 @@ int main( int argc, char * argv[] ) {
         }
         else if(strcmp(argv[i], "-t") == 0)
         {
-            heure = stoi(argv[i+1]);
+            try
+            {
+                heure = stoi(argv[i+1]);
+            }
+            catch(exception &err)
+            {
+                cerr << "The specified hour is not valid !" << endl;
+                return 0;
+            }
+            
             if(!(0<=heure && heure<=23))
             {
                 cerr << "The specified hour is not valid !" << endl;
