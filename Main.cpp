@@ -22,7 +22,7 @@ int main( int argc, char * argv[] ) {
 
     if(argc<2)
     {
-        cout << "Aucun fichier de log n'a été spécifié !" << endl;
+        cerr << "No log file has been specified !" << endl;
         return 0;
     }
     else
@@ -47,28 +47,26 @@ int main( int argc, char * argv[] ) {
         }
         else if(strcmp(argv[i], "-t") == 0)
         {
-            heure = stoi(argv[i+1]);
+            try
+            {
+                heure = stoi(argv[i+1]);
+            }
+            catch(exception &err)
+            {
+                cerr << "The specified hour is not valid !" << endl;
+                return 0;
+            }
+            
             if(!(0<=heure && heure<=23))
             {
-                cout << "L'heure n'est pas valide !" << endl;
+                cerr << "The specified hour is not valid !" << endl;
                 return 0;
             }
             ++i;
         }
         else
         {
-            cout << "Une des commandes n'est pas valide !" << endl;
-            cout << "Les commandes valides sont:" << endl;
-
-            cout << "-g nomfichier.dot  Pour indiquer l'export ";
-            cout << "d'un graphe" << endl;
-
-            cout << "-e                 Pour exclure les documents qui ont une ";
-            cout << "extension de type image, css ou javascript" << endl;
-
-            cout << "-t heure           Pour ne prendre en compte que les ";
-            cout << "hits qui ont eu lieu lors d'une heure spécifique" << endl;
-            
+            cerr << "One of the commands is not valid !" << endl;
             return 0;
         }
     }
@@ -83,16 +81,23 @@ int main( int argc, char * argv[] ) {
     {
         flux.LireLog(stream, stats, prefixe);
 
-        stats.AfficherTopDix();
-
         if(exporterGraph)
         {
             stats.ExporterGraphe(fichierGraph);
+            cout << "Dot-file " << fichierGraph << " generated" << endl;
         }
+
+        if(heure != -1)
+        {
+            cout << "Warning : only hits between " << heure << "h and ";
+            cout << heure+1 << "h have been taken into account" << endl;
+        }
+
+        stats.AfficherTopDix();
     }
     else
     {
-        cout << "Le fichier ne peut pas être ouvert !" << endl;
+        cerr << "The file can not be opened !" << endl;
     }
 
     return 0;
