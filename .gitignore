@@ -28,3 +28,6 @@
 
 # Executable
 analog
+
+#Tests results
+*.csv
