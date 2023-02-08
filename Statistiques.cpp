@@ -12,9 +12,6 @@
 
 //-------------------------------------------------------- Include système
 using namespace std;
-#include <iostream>
-#include <fstream>
-#include <algorithm>
 
 //------------------------------------------------------ Include personnel
 #include "Statistiques.h"

@@ -11,6 +11,9 @@
 #define STATISTIQUES_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <iostream>
+#include <fstream>
+#include <algorithm>
 #include <unordered_map>
 #include <string>
 #include <list>

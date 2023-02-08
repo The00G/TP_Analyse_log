@@ -73,7 +73,7 @@ int main( int argc, char * argv[] ) {
         }
     }
 
-    FluxLog flux(fichierLog);
+    FluxLog flux;
     Statistiques stats(exporterGraph, exclusionImages, heure);
 
     ifstream stream;

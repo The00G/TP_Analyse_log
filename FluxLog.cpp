@@ -12,15 +12,9 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "FluxLog.h"
-#include "Connexion.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -149,38 +143,19 @@ void FluxLog::LireLog ( ifstream & stream, Statistiques & stat, string prefixeAE
         //transfert.Afficher();
         stat.Ajouter(transfert);
     }
-} //----- Fin de Méthode
-
-void FluxLog::SetFichier ( const char * const newNomFichier )
-// Algorithme :
-//
-{
-    int length = strlen(newNomFichier);
-    delete(this->nomFichier);
-    this->nomFichier = new char[length+1];
-
-    strcpy(this->nomFichier, newNomFichier);
-} //----- Fin de Méthode
-
+} //----- Fin de LireLog
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-FluxLog::FluxLog ( const char * const nomFichier )
+FluxLog::FluxLog ( )
 // Algorithme :
-// Copie le nom du fichier dans l'attribut nomFichier
+// 
 {
 #ifdef MAP
     cout << "Appel au constructeur de <FluxLog>" << endl;
 #endif
-
-    int length = strlen(nomFichier);
-    this->nomFichier = new char[length+1];
-
-    strcpy(this->nomFichier, nomFichier);
-
 } //----- Fin de FluxLog
-
 
 FluxLog::~FluxLog ( )
 // Algorithme :
@@ -189,9 +164,6 @@ FluxLog::~FluxLog ( )
 #ifdef MAP
     cout << "Appel au destructeur de <FluxLog>" << endl;
 #endif
-
-    delete(this->nomFichier);
-
 } //----- Fin de ~FluxLog
 
 
