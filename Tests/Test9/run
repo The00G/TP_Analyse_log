@@ -1,0 +1,1 @@
+../bin/analog -g test.dot -t 30 -e ../Logs/Log2.log
