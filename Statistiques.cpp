@@ -71,6 +71,10 @@ void Statistiques::AfficherTopDix ( )// Algorithme :
 //
 {
     this->topDix.clear();
+    if(this->pages.size()==0)
+    {
+        return;
+    }
     unordered_map <string, int>::iterator itPages = this->pages.begin();
     while(itPages != this->pages.end() && this->pages[itPages->first]==0) ++itPages;
     this->topDix.push_front(itPages->first);
