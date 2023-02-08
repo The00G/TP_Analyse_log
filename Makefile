@@ -32,3 +32,4 @@ clean :
 
 test : $(EXE)
 	cp $(EXE) ./Tests/bin/$(EXE)
+	cd Tests && bash mktest.sh
