@@ -11,7 +11,6 @@ endif
 $(EXE) : $(OBJ)
 	@echo edition des liens
 	$(CC) $(OBJ) -o $(EXE)
-	cp $(EXE) ./Tests/bin/$(EXE)
 
 %.o : %.cpp
 	@echo compilation de $<
@@ -22,7 +21,7 @@ Statistiques.o : Statistiques.h
 FluxLog.o : FluxLog.h
 Connexion.o : Connexion.h
 
-.PHONY : remake clean debug
+.PHONY : remake clean debug test
 
 debug : clean $(EXE)
 
@@ -30,3 +29,6 @@ remake : clean $(EXE)
 
 clean :
 	rm -f $(EXE) *.o
+
+test : $(EXE)
+	cp $(EXE) ./Tests/bin/$(EXE)
