@@ -4,6 +4,7 @@ using namespace std;
 #include <unordered_map>
 #include <string>
 #include <cstring>
+#include <fstream>
 #include "FluxLog.h"
 #include "Connexion.h"
 #include "Statistiques.h"
@@ -13,11 +14,21 @@ int main( int argc, char * argv[] ) {
 
     string prefixe = "http://intranet-if.insa-lyon.fr";
 
-    char * fichierLog = argv[argc-1];
+    char * fichierLog;
     bool exporterGraph = false;
     string fichierGraph;
     bool exclusionImages = false;
     int heure = -1;
+
+    if(argc<2)
+    {
+        cout << "Aucun fichier de log n'a été spécifié !" << endl;
+        return 0;
+    }
+    else
+    {
+        fichierLog = argv[argc-1];
+    }
 
     // Test de la validité des commandes
     // ./analog [options] nomfichier.log
@@ -62,22 +73,27 @@ int main( int argc, char * argv[] ) {
         }
     }
 
-    FluxLog * flux = new FluxLog(fichierLog);
-    Statistiques * stats = new Statistiques(exporterGraph, exclusionImages, heure);
+    FluxLog flux(fichierLog);
+    Statistiques stats(exporterGraph, exclusionImages, heure);
 
+    ifstream stream;
+    stream.open(fichierLog);
 
-    flux->LireLog(stats, prefixe);
-
-    if(exporterGraph)
+    if(!stream.fail())
     {
-        stats->ExporterGraphe(fichierGraph);
+        flux.LireLog(stream, stats, prefixe);
+
+        stats.AfficherTopDix();
+
+        if(exporterGraph)
+        {
+            stats.ExporterGraphe(fichierGraph);
+        }
     }
-
-    stats->AfficherTopDix();
-
-
-    delete(flux);
-    delete(stats);
+    else
+    {
+        cout << "Le fichier ne peut pas être ouvert !" << endl;
+    }
 
     return 0;
 }

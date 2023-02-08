@@ -31,7 +31,7 @@ class FluxLog
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void LireLog ( Statistiques * stat, string prefixeAEnlever = "" ) const;
+    void LireLog ( ifstream & stream, Statistiques & stat, string prefixeAEnlever = "" ) const;
     // Mode d'emploi :
     // 
     // Contrat :
