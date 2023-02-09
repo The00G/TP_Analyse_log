@@ -26,8 +26,9 @@ using namespace std;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <FluxLog>
-//
-//
+// La classe FluxLog sert à lire un flux de fichier de logs
+// Dans le cas où de nouveaux types de logs voudraient être lus, il suffit
+// de créer une nouvelle méthode calquée sur LireLog
 //------------------------------------------------------------------------
 
 class FluxLog
@@ -38,7 +39,9 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void LireLog ( ifstream & stream, Statistiques & stat, string prefixeAEnlever = "" ) const;
     // Mode d'emploi :
-    // 
+    // Traite des logs Apache depuis un flux passé en paramètre
+    // Les logs traités sont envoyés à l'objet Statistiques passé en
+    // paramètre
     // Contrat :
     //
 

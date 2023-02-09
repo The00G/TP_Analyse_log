@@ -143,6 +143,7 @@ void FluxLog::LireLog ( ifstream & stream, Statistiques & stat, string prefixeAE
         #ifdef MAP
             transfert.Afficher();
         #endif
+        
         stat.Ajouter(transfert);
     }
 } //----- Fin de LireLog

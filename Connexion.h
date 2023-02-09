@@ -22,8 +22,8 @@ using namespace std;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Connexion>
-//
-//
+// Stocke un log au format Apache afin de pouvoir le manipuler plus
+// facilement
 //------------------------------------------------------------------------
 
 class Connexion
@@ -49,7 +49,10 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Afficher ( bool fullInfo = false ) const;
     // Mode d'emploi :
-    // 
+    // Permet d afficher les informations d un log pour faciliter le
+    // débugage
+    // L option fullInfo permet de choisir entre tout afficher et afficher
+    // seulement les infos principales
     // Contrat :
     //
 

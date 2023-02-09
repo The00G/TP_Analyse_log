@@ -54,7 +54,7 @@ void Connexion::Afficher ( bool fullInfo ) const
     }
 
 
-} //----- Fin de Methode
+} //----- Fin de Afficher
 
 //------------------------------------------------- Surcharge d'opérateurs
 
