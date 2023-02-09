@@ -31,3 +31,6 @@ analog
 
 #Tests results
 *.csv
+
+#project archive
+*.zip

@@ -21,7 +21,7 @@ Statistiques.o : Statistiques.h
 FluxLog.o : FluxLog.h
 Connexion.o : Connexion.h
 
-.PHONY : remake clean debug test
+.PHONY : remake clean debug test zip
 
 debug : clean $(EXE)
 
@@ -33,3 +33,6 @@ clean :
 test : $(EXE)
 	cp $(EXE) ./Tests/bin/$(EXE)
 	cd Tests && bash mktest.sh
+
+zip :
+	zip -r GAIGE-TARASSOV-B3208.zip *.cpp *.h README.md Tests Makefile
