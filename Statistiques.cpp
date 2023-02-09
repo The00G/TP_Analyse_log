@@ -42,63 +42,74 @@ void Statistiques::Ajouter ( Connexion c )
 
 } //----- Fin de Ajouter
 
-void Statistiques::ExporterGraphe ( string nomFichier )
+void Statistiques::ExporterGraphe ( ostream & flux )
 // Algorithme :
 //
 {
-    ofstream flux;
-    flux.open( nomFichier );
+    
 
 
     flux << "digraph {" << endl;
-    for(unordered_map <string, int>::iterator it = this->pages.begin(); it != this->pages.end(); ++it)
+    for(unordered_map <string, int>::const_iterator it = this->pages.begin(); it != this->pages.end(); ++it)
     {
         flux << "\"" << it->first << "\"" << endl;
     }
-    for(unordered_map <string, int>::iterator it = this->connexions.begin(); it != this->connexions.end(); ++it)
+
+    for(unordered_map <string, int>::const_iterator it = this->connexions.begin(); it != this->connexions.end(); ++it)
     {
         flux << "\"" << it->first.substr(0,it->first.find("\n")) 
              << "\" -> \"" << it->first.substr(it->first.find("\n")+1,it->first.length()) 
              << "\" [label=\"" << it->second << "\"];" << endl;
     }
     flux << "}";
+
 } //----- Fin de ExporterGraphe
 
 void Statistiques::AfficherTopDix ( )// Algorithme :
 //
 {
     this->topDix.clear();
+
     if(this->pages.size()==0)
     {
         return;
     }
-    unordered_map <string, int>::iterator itPages = this->pages.begin();
-    while(itPages != this->pages.end() && this->pages[itPages->first]==0) ++itPages;
-    this->topDix.push_front(itPages->first);
-    ++itPages;
+
+    unordered_map <string, int>::const_iterator itPages = this->pages.begin();
+
     while( itPages != this->pages.end() && this->topDix.size() < 10)
     {
         int nbRedirections = this->pages[itPages->first];
-        if(nbRedirections > 0) {
+        if(nbRedirections != 0) {
             list<string>::iterator itTop = this->topDix.begin();
-            while( itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections) ++itTop;
+            while( itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections) 
+            {
+                ++itTop;
+            }
             this->topDix.insert(itTop,itPages->first);
         }
         ++itPages;
     }
+
     while (itPages != this->pages.end())
     {
         int nbRedirections = this->pages[itPages->first];
         list<string>::iterator itTop = this->topDix.begin();
         if(nbRedirections > this->pages[*itTop])
         {
-            do {++itTop;} while(itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections);
+            do 
+            {
+                ++itTop;
+            } 
+            while(itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections);
+
             this->topDix.insert(itTop,itPages->first);
             this->topDix.pop_front();
         }
         ++itPages;
     }
-    for(list<string>::reverse_iterator rit = this->topDix.rbegin(); rit != this->topDix.rend(); ++rit) {
+
+    for(list<string>::const_reverse_iterator rit = this->topDix.rbegin(); rit != this->topDix.rend(); ++rit) {
         cout << *rit << " (" << this->pages[*rit] << " hits)" << endl;
     }
 } //----- Fin de AfficherTopDix

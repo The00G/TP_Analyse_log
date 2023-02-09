@@ -41,7 +41,7 @@ public:
     // Contrat :
     //
 
-    void ExporterGraphe ( string nomFichier ) ;
+    void ExporterGraphe ( ostream & flux ) ;
 
     void AfficherTopDix ( ) ;
 

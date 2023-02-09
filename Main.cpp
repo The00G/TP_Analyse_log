@@ -83,8 +83,17 @@ int main( int argc, char * argv[] ) {
 
         if(exporterGraph)
         {
-            stats.ExporterGraphe(fichierGraph);
-            cout << "Dot-file " << fichierGraph << " generated" << endl;
+            ofstream streamGraph;
+            streamGraph.open( fichierGraph );
+            if(!streamGraph.fail())
+            {
+                stats.ExporterGraphe(streamGraph);
+                cout << "Dot-file " << fichierGraph << " generated" << endl;
+            }
+            else
+            {
+                cerr << "Dot-file could not be generated" << endl;
+            }
         }
 
         if(heure != -1)
