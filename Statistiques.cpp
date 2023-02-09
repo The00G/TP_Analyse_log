@@ -65,10 +65,13 @@ void Statistiques::ExporterGraphe ( ostream & flux )
 
 } //----- Fin de ExporterGraphe
 
-void Statistiques::AfficherTopDix ( )// Algorithme :
-//
+void Statistiques::AfficherTop ( ostream & flux , long unsigned int n)
+// Algorithme :
+// Parcourt l'ensemble des pages enregistrées et stocke les n plus accédés 
+// dans la liste top de la moins accédée à la plus accédée
+// puis affiche les pages de la liste en la parcourant en ses inverse
 {
-    this->topDix.clear();
+    this->top.clear();
 
     if(this->pages.size()==0)
     {
@@ -77,16 +80,16 @@ void Statistiques::AfficherTopDix ( )// Algorithme :
 
     unordered_map <string, int>::const_iterator itPages = this->pages.begin();
 
-    while( itPages != this->pages.end() && this->topDix.size() < 10)
+    while( itPages != this->pages.end() && this->top.size() < n)
     {
         int nbRedirections = this->pages[itPages->first];
         if(nbRedirections != 0) {
-            list<string>::iterator itTop = this->topDix.begin();
-            while( itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections) 
+            list<string>::iterator itTop = this->top.begin();
+            while( itTop != this->top.end() && this->pages[*itTop] < nbRedirections) 
             {
                 ++itTop;
             }
-            this->topDix.insert(itTop,itPages->first);
+            this->top.insert(itTop,itPages->first);
         }
         ++itPages;
     }
@@ -94,42 +97,43 @@ void Statistiques::AfficherTopDix ( )// Algorithme :
     while (itPages != this->pages.end())
     {
         int nbRedirections = this->pages[itPages->first];
-        list<string>::iterator itTop = this->topDix.begin();
+        list<string>::iterator itTop = this->top.begin();
         if(nbRedirections > this->pages[*itTop])
         {
             do 
             {
                 ++itTop;
             } 
-            while(itTop != this->topDix.end() && this->pages[*itTop] < nbRedirections);
+            while(itTop != this->top.end() && this->pages[*itTop] < nbRedirections);
 
-            this->topDix.insert(itTop,itPages->first);
-            this->topDix.pop_front();
+            this->top.insert(itTop,itPages->first);
+            this->top.pop_front();
         }
         ++itPages;
     }
 
-    for(list<string>::const_reverse_iterator rit = this->topDix.rbegin(); rit != this->topDix.rend(); ++rit) {
-        cout << *rit << " (" << this->pages[*rit] << " hits)" << endl;
+    for(list<string>::const_reverse_iterator rit = this->top.rbegin(); rit != this->top.rend(); ++rit) {
+        flux << *rit << " (" << this->pages[*rit] << " hits)" << endl;
     }
-} //----- Fin de AfficherTopDix
+} //----- Fin de AfficherTop
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*Statistiques::Statistiques ( const Statistiques & unStatistiques )
+Statistiques::Statistiques ( const Statistiques & s )
+        : pages(s.pages), connexions(s.connexions), graphe(s.graphe), 
+          exclureFichierSpec(s.exclureFichierSpec), heure(s.heure)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Statistiques>" << endl;
 #endif
-} //----- Fin de Statistiques (constructeur de copie)*/
-
+} //----- Fin de Statistiques (constructeur de copie)
 
 Statistiques::Statistiques ( bool graphe, bool exclureFichierSpec, int heure )
-        : graphe(graphe), exclureFichierSpec(exclureFichierSpec), heure(heure), nbConnexions(0)
+        : graphe(graphe), exclureFichierSpec(exclureFichierSpec), heure(heure)
 // Algorithme :
 //
 {

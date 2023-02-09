@@ -102,7 +102,7 @@ int main( int argc, char * argv[] ) {
             cout << heure+1 << "h have been taken into account" << endl;
         }
 
-        stats.AfficherTopDix();
+        stats.AfficherTop( cout );
     }
     else
     {
