@@ -92,7 +92,7 @@ int main( int argc, char * argv[] ) {
             }
             else
             {
-                cerr << "Dot-file could not be generated" << endl;
+                cerr << "Dot-file could not be generated !" << endl;
             }
         }
 

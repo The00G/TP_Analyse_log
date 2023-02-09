@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Statistiques  -  description
+        Statistiques  -  des statistique sur l'accès a des pages web
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 20/01/2023
+    copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
+    e-mail               : theo.gaige@insa-lyon.fr
+                           elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Statistiques> (fichier Statistiques.cpp) ------------
+//- Réalisation de la classe <Statistiques> (fichier Statistiques.cpp) -//
 
 //---------------------------------------------------------------- INCLUDE
 

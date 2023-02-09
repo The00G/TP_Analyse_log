@@ -1,12 +1,13 @@
 /*************************************************************************
-                           Statistiques  -  description
+        Statistiques  -  des statistique sur l'accès a des pages web
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 20/01/2023
+    copyright            : (C) 2022 par Théo Gaigé et Elie Tarassov
+    e-mail               : theo.gaige@insa-lyon.fr
+                           elie.tarassov@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Statistiques> (fichier Statistiques.h) ----------------
+//--- Interface de la classe <Statistiques> (fichier Statistiques.h) ---//
 #if ! defined ( STATISTIQUES_H )
 #define STATISTIQUES_H
 
@@ -25,8 +26,8 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Statistiques>
-//
-//
+// Stocke le nombre d'accès au pages dans les log de connexion fournis
+// Peut réaliser un graphe des accès
 //------------------------------------------------------------------------
 
 class Statistiques
